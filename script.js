@@ -4,7 +4,7 @@ let lastUpdate = Date.now();
 
 for (let i = 0; i < 10; i++) {
   let generator = {
-    cost: Math.pow(Math.pow(10, i), i),
+    cost: Math.pow(Math.pow(10, i), i) * 10,
     bought: 0,
     amount: 0,
     mult: 1,
@@ -17,6 +17,16 @@ function format(amount) {
   let mantissa = amount / Math.pow(10, power);
   if (power < 3) return amount.toFixed(2);
   return mantissa.toFixed(2) + "e" + power;
+}
+
+function buyGenerator(i) {
+  let g = generators[i - 1];
+  if (g.cost > money) return;
+  money -= g.cost;
+  g.amount += 1;
+  g.bought += 1;
+  g.mult *= 1.05;
+  g.cost *= 1.5;
 }
 
 function updateGUI() {
@@ -33,6 +43,11 @@ function updateGUI() {
       format(g.mult) +
       "x<br>Cost: " +
       format(g.cost);
+    if (g.cost > money) {
+      document.getElementById(`gen${i + 1}`).classList.add("locked");
+    } else {
+      document.getElementById(`gen${i + 1}`).classList.remove("locked");
+    }
   }
 }
 

@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+#currency-display {
+  margin: 40px;
+  font-size: 2em;
+  text-align: center;
+}
+
+.generator {
+  border: 2px solid darkblue;
+  background-color: lightblue;
+  text-align: center;
+  width: 300px;
+  padding: 15px;
+  font-size: 1.3em;
+  cursor: pointer;
+  user-select: none;
+  margin: 15px;
+}
+
+.generator-container {
+  display: flex;
+  width: 660px;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.locked {
+  background-color: coral;
+}
