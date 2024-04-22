@@ -1,4 +1,5 @@
 let money = 10;
+let lastMoney = 10;
 let generators = [];
 let lastUpdate = Date.now();
 
@@ -26,7 +27,8 @@ function buyGenerator(i) {
   g.amount += 1;
   g.bought += 1;
   g.mult *= 1.05;
-  g.cost *= 1.5;
+  // Should be g.cost *= 1.5;
+  g.cost *= 1.1;
 }
 
 function updateGUI() {
@@ -61,6 +63,7 @@ function productionLoop(diff) {
 
 function mainLoop() {
   let diff = (Date.now() - lastUpdate) / 1000;
+
   productionLoop(diff);
   updateGUI();
   lastUpdate = Date.now();
